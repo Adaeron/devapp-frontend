@@ -5,11 +5,6 @@ import { PersonasPage } from './components/personas/PersonasPage';
 import { AutosPage } from './components/autos/AutosPage';
 import { PersonaDetailsPage } from './components/personas/PersonaDetailsPage';
 import { AutoDetailsPage } from './components/autos/AutoDetailsPage';
-import { PersonaEditPage } from './components/personas/PersonaEditPage';
-import { AutoEditPage } from './components/autos/AutoEditPage';
-import { NewEntityButton } from './components/buttons';
-import { NewEntityForm } from './components/formulario/NewEntityForm';
-import { PersonaNewForm } from './components/personas/PersonaNewForm';
 import { PersonaForm } from './components/personas/PersonaForm';
 import { AutoForm } from './components/autos/AutoForm';
 

@@ -16,9 +16,9 @@ export const AutoForm: React.FC<AutoFormProps> = ({ isEdit }) => {
     //Si es edición, tomo el ID de los parámetros del path.
     const params = useParams<{ id: string }>();
     const [auto, setAuto] = useState<withId<Auto>>();
-    const dniDuenioNewAuto: string = location.state?.dniDuenio;
+    const dniDuenioNewAuto: string | null = isEdit ? location.state?.dniDuenio : null;
 
-    //Refs de persona
+    //Refs de auto
     const marcaRef = useRef<HTMLInputElement>(null);
     const modeloRef = useRef<HTMLInputElement>(null);
     const anioRef = useRef<HTMLInputElement>(null);
@@ -80,9 +80,9 @@ export const AutoForm: React.FC<AutoFormProps> = ({ isEdit }) => {
     useEffect(() => {
         if (isEdit && params.id) {
             fetchAuto(params.id!);
-            console.log(location.state.dniDuenio);
+            console.log(location.state?.dniDuenio);
         }
-    }, [params.id, isEdit, location.state.dniDuenio]);
+    }, [params.id, isEdit, location.state?.dniDuenio]);
     return isEdit ? (
         !auto ? (
             <div>Cargando...</div>
