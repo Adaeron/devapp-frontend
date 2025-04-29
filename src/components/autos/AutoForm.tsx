@@ -82,7 +82,7 @@ export const AutoForm: React.FC<AutoFormProps> = ({ isEdit }) => {
             fetchAuto(params.id!);
             console.log(location.state.dniDuenio);
         }
-    }, [params.id, isEdit]);
+    }, [params.id, isEdit, location.state.dniDuenio]);
     return isEdit ? (
         !auto ? (
             <div>Cargando...</div>

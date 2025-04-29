@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { FormEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Persona } from '../../model/Persona';
 import { buscarPersona, crearPersona, editarPersona } from '../../api/Personas';
@@ -70,7 +70,7 @@ export const PersonaForm: React.FC<PersonaFormProps> = ({ isEdit }) => {
         }
     };
 
-    const fetchPersona = async (id: string) => {
+    const fetchPersona = useCallback(async (id: string) => {
         const response = await buscarPersona(id);
         if (response.status === 200) {
             setPersona(response.data);
@@ -78,7 +78,7 @@ export const PersonaForm: React.FC<PersonaFormProps> = ({ isEdit }) => {
                 fetchAutos(response.data.dni);
             }
         }
-    };
+    }, []);
 
     const fetchAutos = async (dni: string) => {
         const response = await buscarAutos(dni);
@@ -95,7 +95,7 @@ export const PersonaForm: React.FC<PersonaFormProps> = ({ isEdit }) => {
         if (isEdit && params.id) {
             fetchPersona(params.id!);
         }
-    }, [params.id, isEdit]);
+    }, [params.id, isEdit, fetchPersona]);
     return isEdit ? (
         !persona ? (
             <div>Cargando...</div>

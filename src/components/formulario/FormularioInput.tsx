@@ -1,10 +1,20 @@
-interface FormularioInputProps {
-    inputType: string;
-    defaultContent?: string;
+interface BaseInputProps {
+    inputType: 'text' | 'number' | 'date';
     labelContent: string;
-    inputRef: React.RefObject<HTMLInputElement | HTMLSelectElement>;
-    required: boolean;
+    inputRef: React.RefObject<HTMLInputElement | null>;
+    required?: boolean;
+    defaultContent?: string | number;
 }
+
+interface SelectInputProps {
+    inputType: 'select';
+    labelContent: string;
+    inputRef: React.RefObject<HTMLSelectElement | null>;
+    required?: boolean;
+    defaultContent?: string;
+}
+
+type FormularioInputProps = BaseInputProps | SelectInputProps;
 
 export const FormularioInput: React.FC<FormularioInputProps> = ({
     inputType,
