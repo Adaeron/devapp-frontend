@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const PORT = 3000;
+const URL = 'devapp-backend.railway.internal';
+
 const api = axios.create({
-    baseURL: 'http://localhost:3000'
+    baseURL: `${URL}:${PORT}`
 });
 
 export default api;
