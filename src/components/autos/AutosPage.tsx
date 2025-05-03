@@ -11,7 +11,9 @@ export const AutosPage = () => {
 
     const fetchAutos = async () => {
         const response = await listarAutos();
-        setAutos(response);
+        if (response.status === 200) {
+            setAutos(response.data);
+        }
     };
 
     useEffect(() => {

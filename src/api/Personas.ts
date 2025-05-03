@@ -4,9 +4,9 @@ import api from './Api';
 
 const PERSONAS_URL = '/personas';
 
-export const listarPersonas: () => Promise<withId<Persona>[]> = async () => {
+export const listarPersonas = async () => {
     const response = await api.get<withId<Persona>[]>(PERSONAS_URL);
-    return response.data;
+    return response;
 };
 
 export const buscarPersona = async (idPersona: string) => {

@@ -73,23 +73,25 @@ export const EntityTableRow: React.FC<TableBodyProps> = ({ entity, entityType, h
         }
     };
     return (
-        <tr>
-            {Object.values(entityWithoutId).map((value) => (
-                <EntityDataCell key={value} content={value} />
-            ))}
-            <td key={entity._id} style={{ padding: '1px' }}>
-                <AbstractButton color="azul" id={entity._id} content="Ver" callback={handleVer} />
-                <AbstractButton color="amarillo" id={entity._id} content="Editar" callback={handleEditar} />
-                <AbstractButton color="rojo" id={entity._id} content="Borrar" callback={handleBorrar} />
-                {entityType === 'autos' ? (
-                    <AbstractButton id={entity._id} content="Ver Dueño" callback={handleVerDuenio} color="gris" />
-                ) : (
-                    <></>
-                )}
-            </td>
+        <>
+            <tr>
+                {Object.values(entityWithoutId).map((value) => (
+                    <EntityDataCell key={value} content={value} />
+                ))}
+                <td key={entity._id} style={{ padding: '1px' }}>
+                    <AbstractButton color="azul" id={entity._id} content="Ver" callback={handleVer} />
+                    <AbstractButton color="amarillo" id={entity._id} content="Editar" callback={handleEditar} />
+                    <AbstractButton color="rojo" id={entity._id} content="Borrar" callback={handleBorrar} />
+                    {entityType === 'autos' ? (
+                        <AbstractButton id={entity._id} content="Ver Dueño" callback={handleVerDuenio} color="gris" />
+                    ) : (
+                        <></>
+                    )}
+                </td>
+            </tr>
             {deleteConfirmation && (
                 <DeletePopup cancelDeleteCallback={handleCancelDelete} confirmDeleteCallback={handleConfirmDelete} />
             )}
-        </tr>
+        </>
     );
 };

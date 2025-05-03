@@ -11,7 +11,10 @@ export const PersonasPage = () => {
 
     const fetchPersonas = async () => {
         const response = await listarPersonas();
-        setPersonas(response);
+        console.log(response.data);
+        if (response.status === 200) {
+            setPersonas(response.data);
+        }
     };
 
     useEffect(() => {

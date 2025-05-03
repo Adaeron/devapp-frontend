@@ -6,7 +6,7 @@ const AUTOS_URL = '/autos';
 
 export const listarAutos = async () => {
     const response = await api.get<withId<Auto>[]>(AUTOS_URL);
-    return response.data;
+    return response;
 };
 
 export const buscarAuto = async (id: string) => {
